@@ -84,10 +84,15 @@ Note: 몇몇의 유명한 TrueType font 프로그램들은 정확하지 않은 �
 
 이어지는 단락들은 PDF 1.4에서 TrueType font 인코딩을 다루는 것을 설명한다. 최신 버전에서는 필요하지 않은 적용 방법에 대한 설명이다.
  TrueType font 프로그램의 "cmap" 테이블은 하나 이상의 서브테이블로 구성되어있다. 각각은 Platform ID와 platform-specific encoding ID의 조합으로 구성되어 있다. 만약 인코딩의 name (WinAnsiEncoding, MacRomanEncoding 또는 MacExpertEncoding)이 font dictionary의 인코딩 엔트리 또는 인코딩 dictionary의 BaseEndoding 엔트리내에 명시되어 있다면, "cmap" 서브테이블은 선택되고 사용된다. 이에 대한 설명은 아래에 있다.
- * 만약 platform ID 3과 encoding ID 1을 가진 "cmap" 서브테이블이 나타났다면, 이거든 다음과 같이 사용된다.
+ * 만약 platform ID 3과 encoding ID 1(Microsoft Unicode)을 가진 "cmap" 서브테이블이 나타났다면, 이것은 다음과 같이 사용된다. 먼저 Chracter code는 font의 인코딩 엔트리에 의해 명시된 character name에 맵핑된다. 그후 character name은 Adobe Glyph List를 참조하여 Unicode 값으로 맵핑된다. 마지막으로 Unicode 값은 (3, 1) 서브테이블에 따라 glyph description을 매핑한다.
+* 만약 platform ID 1과 encoding ID 0(Macintosh Roman)을 가진 "cmap" 서브테이블이 나타났다면, 이것은 다음과 같이 사용된다. 먼저 Chracter code는 font의 인코딩 엔트리에 의해 명시된 character name에 맵핑된다. 그후 character name은 MacRomanEncoding을 참조하여 Unicode 값으로 맵핑된다. 마지막으로 Unicode 값은 (1, 0) 서브테이블에 따라 glyph description을 매핑한다.
+* 위에 경우중 하나에서, 만약 character name을 명시된대로 맵핑할 수 없는 경우, character name은 font 프로그램의 "post" 테이블에서 찾아지고 연관된 glyph description이 사용되어진다.
 
-... continue...
+ <pre> Character Code -> Character Name -> Unicode Value -> Glyph Description </pre>
 
+font dictionary안에 명시된 인코딩 엔트리가 없을 경우에는 character name에 대한 고려 없이 platform ID 1과 encoding ID 0을 가진"cmap" 서브 테이블이 character code로부터 glyph description을 직접 매핑하는 데 사용되어진다. 이것은 symbolic font에 대한 일반적인 convetion이다.
+
+만약 위에 언급한 어떠한 방법으로도 character가 맵핑될 수 없다면 그 결과는 구현-의존적일 것이다.
 
 
 
