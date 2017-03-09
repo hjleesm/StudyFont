@@ -10,8 +10,9 @@ Table 1은 모든 platform에서 사용하는 TrueType font 파일에서 사용�
 기본 integer 데이터 타입 이외에, TrueType 폰트 형식은 아래와 같은 데이터 타입을 사용한다.
 
 Table 1: 'sfnt' 데이터 타입
+
 |Data Type|Description|
-|:-|:-|
+|:---|:---|
 |shortFrac|부호를 가진 16비트 분수|
 |Fixed|부호를 가진 16비트 고정소수점 실수|
 |FWord|부호를 가진 16비트 정수. FUnit. em 공간에서의 최소 측정 단위|
@@ -27,6 +28,7 @@ TrueType 폰트 파일은 연결된 테이블의 연속으로 구성되어 있�
 테이블들은 알려진 태그로서 이름을 갖고 있다. 태그는 uint32 타입이다. 현재는 태그 이름들은 4개의 문자로 구성되어 있다. 4개의 문자보다 작은 문자로 구성된 태그 이름들은 공백을 채워 4자리로 표현한다. 태그 이름을 텍스트로서 보여줄 때는 작은 따음표로 감싸서 표현한다.
 
 Table 2: The required tables
+
 |Tag|Table|
 |:---|:---|
 |'cmap'|character to glyph mapping|
@@ -42,6 +44,7 @@ Table 2: The required tables
 Table 2에 나열된 "required" 테이블은 오직 TrueType 폰트에서만 요구된다. 다른 다양한 sfnt-housed 폰드는 이러한 테이블을 가지지 않는다.
 
 Table 3: The optional tables
+
 |Tag|Table|
 |:---|:---|
 |'cvt'|control value|
@@ -60,6 +63,7 @@ offset 서브테이블은, Table 4에 설명되어 있다. offset 서브테이�
 (... 대충 이진 검색이 좋다는 내용이 주를 이루기 때문에 생략한다 ... )
 
 Table 4: The offset subtable
+
 |Type|Name|Description|
 |:---|:---|:---|
 |uint32|scaler type|A tag to indicate the OFA scaler to be used to rasterize this font; see the note on the scaler type below for more information.|
@@ -72,6 +76,7 @@ Table 4: The offset subtable
 테이블 디렉토리는 offset 서브테이블을 뒤에 온다. 테이블 디렉토리내에 항목들은 반드시 태그 순서로 오름차순으로 정렬되어야한다. 각각의 폰트 파일내에 테이블은 자신의 테이블 디렉토리 항목을 가져야한다. Table 5는 테이블 디렉토리의 구조를 설명한다.
 
 Table 5: The table directory
+
 |Type|Name|Description|
 |:---|:---|:---|
 |uint32|tag|4-byte identifier|
