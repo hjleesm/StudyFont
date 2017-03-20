@@ -83,6 +83,7 @@ Table 5: The table directory
 |uint32|checkSum|checksum for this table|
 |uint32|offset|offset from beginning of sfnt|
 |uint32|length|length of this table in byte (actual length not padded length)|
+
 테이블 디렉토리는 chaeckSum을 가지고 있다. 이 숫자는 자신과 연결된 태그된 테이블에서 테이터가 일치하는 지 무결한지 확인하는데 사용된다. 다음에 오는 C function은 주어진 테이블의 checkSum을 결정하는데 사용되는 함수이다.
 
 <pre>
