@@ -1,5 +1,9 @@
 # Font Structure
 
+
+![Alt text](/img/structure.png "Font File Structure")
+
+
 4 Bytes: ttId
 
 2 Bytes: the number of tables
