@@ -17,8 +17,8 @@
 
   4 Bytes: Tag of table
   
-  4 Bytes: Skip!!!
-  
+  4 Bytes: CheckSum
+ 
   4 Bytes: table location1
   
   4 Bytes: table location2
